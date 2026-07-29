@@ -3,8 +3,8 @@
 # Prompt user for inputs
 read -p "Enter domain name (leave blank for none): " DOMAIN_NAME
 read -p "Enter app name: " APP_NAME
-read -p "Enter app port (default 4000): " APP_PORT
-APP_PORT=${APP_PORT:-4000}
+read -p "Enter app port (default 3000): " APP_PORT
+APP_PORT=${APP_PORT:-3000}
 
 if [[ -n "$DOMAIN_NAME" ]]; then
     read -p "Enter SSL certificate path: " SSL_CERT
@@ -73,7 +73,7 @@ EOF
 }
 
 reload_nginx(){
-        if sytemctl is-active --quiet nginx; then
+        if systemctl is-active --quiet nginx; then
                 echo "Reloading Nginx..."
                 sudo systemctl reload nginx
         else
